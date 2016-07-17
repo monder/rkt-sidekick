@@ -1,0 +1,20 @@
+hash: 69b80400e5de67df21ee7d607df347169aab472aa1ef1f284c55cdd9746fa56a
+updated: 2016-07-17T11:49:46.300890403+03:00
+imports:
+- name: github.com/coreos/etcd
+  version: 336e4f2f28799d901bd76f58372dc274fd45d777
+  subpackages:
+  - client
+  - pkg/pathutil
+  - pkg/types
+- name: github.com/spf13/pflag
+  version: 367864438f1b1a3c7db4da06a2f55b144e6784e0
+- name: github.com/ugorji/go
+  version: b94837a2404ab90efe9289e77a70694c355739cb
+  subpackages:
+  - codec
+- name: golang.org/x/net
+  version: be28236b9034a52ec04f37f16f355b4bde7807e2
+  subpackages:
+  - context
+devImports: []
