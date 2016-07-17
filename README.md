@@ -16,7 +16,7 @@ rkt run \
    --insecure-options=image \
    --net=flannel \
    docker://redis \
-   monder.cc/rkt-sidekick:0.0.1 -- --cidr 10.0.0.0/16 /services/redis-a6f43b/ip
+   monder.cc/rkt-sidekick:v0.0.1 -- --cidr 10.0.0.0/16 /services/redis-a6f43b/ip
 ```
 
 The script above will launch redis and a sidekick in the same pod. The sidekick will enumerate all network interfaces and write the first one matching `10.0.0.0/16` to the key `/services/redis-a6f43b/ip`
