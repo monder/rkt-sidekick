@@ -9,6 +9,7 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 )
@@ -16,12 +17,14 @@ import (
 var flags struct {
 	etcdAddress string
 	cidr        string
+	format      string
 	interval    time.Duration
 }
 
 func init() {
 	pflag.StringVarP(&flags.etcdAddress, "etcd-endpoint", "e", "http://172.16.28.1:2379", "an etcd address in the cluster")
 	pflag.StringVar(&flags.cidr, "cidr", "0.0.0.0/0", "cidr to match the ip")
+	pflag.StringVarP(&flags.format, "format", "f", "$ip", "format of the etcd key value. '$ip' will be replace by container's ip address")
 	pflag.DurationVarP(&flags.interval, "interval", "i", time.Minute, "refresh interval")
 	pflag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n  %s /key/in/etcd\n\nFlags:\n", os.Args[0])
@@ -48,7 +51,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_, err = etcd.Set(context.Background(), pflag.Arg(0), ip, &client.SetOptions{TTL: 2 * flags.interval})
+	value := strings.Replace(flags.format, "$ip", ip, -1)
+
+	_, err = etcd.Set(context.Background(), pflag.Arg(0), value, &client.SetOptions{TTL: 2 * flags.interval})
 	if err != nil {
 		log.Fatal(err)
 	}
