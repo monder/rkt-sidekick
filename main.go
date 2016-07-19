@@ -71,9 +71,8 @@ func main() {
 
 func getEtcd(endpoints []string) (client.KeysAPI, error) {
 	cfg := client.Config{
-		Endpoints:               endpoints,
-		Transport:               client.DefaultTransport,
-		HeaderTimeoutPerRequest: time.Second,
+		Endpoints: endpoints,
+		Transport: client.DefaultTransport,
 	}
 	c, err := client.New(cfg)
 	if err != nil {
