@@ -3,7 +3,7 @@
 export CGO_ENABLED=0
 export GOOS=linux
 export GOARCH=amd64
-export VERSION=v0.0.1
+export VERSION=v0.0.2
 
 go build -ldflags '-extldflags "-static"'
 acbuild begin
@@ -14,5 +14,5 @@ acbuild label add version $VERSION
 acbuild label add arch $GOARCH
 acbuild label add os $GOOS
 acbuild annotation add authors "Aleksejs Sinicins <monder@monder.cc>"
-acbuild write rkt-sidekick-${VERSION}-${GOOS}-${GOARCH}.aci
+acbuild write rkt-sidekick-${VERSION}-${GOOS}-${GOARCH}.aci --overwrite
 acbuild end
