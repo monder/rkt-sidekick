@@ -1,9 +1,9 @@
 #!/bin/sh
 
-CGO_ENABLED=0
-GOOS=linux
-GOARCH=amd64
-VERSION=0.0.1
+export CGO_ENABLED=0
+export GOOS=linux
+export GOARCH=amd64
+export VERSION=v0.0.1
 
 go build -ldflags '-extldflags "-static"'
 acbuild begin
