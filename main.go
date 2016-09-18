@@ -44,7 +44,7 @@ func main() {
 	sigc := make(chan os.Signal, 1)
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
-	etcd, err := getEtcd([]string{flags.etcdAddress})
+	etcd, err := getEtcd(strings.Split(flags.etcdAddress, ","))
 	if err != nil {
 		log.Fatal(err)
 	}
