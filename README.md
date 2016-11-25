@@ -26,6 +26,12 @@ Please note how to pass arguments to multiple images: https://coreos.com/rkt/doc
 ### Other options
 
 ```
+Usage: rkt-sidekick route53 [options] [ZONE_ID] [HOSTNAME]
+
+Options:
+    -cidr              cidr to match the ip (default: "0.0.0.0/0")  
+
+
 Usage: rkt-sidekick etcd [options] [KEY_IN_ETCD]
 
 Options:
