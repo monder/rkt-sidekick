@@ -16,7 +16,7 @@ rkt run \
    --insecure-options=image \
    --net=flannel \
    docker://redis \
-   monder.cc/rkt-sidekick:v0.0.2 -- --cidr 10.0.0.0/16 -f '{"host":"$ip", "port":3000}' /services/redis-a6f43b/ip
+   monder.cc/rkt-sidekick:v0.1.0 -- -cidr 10.0.0.0/16 -format '{"host":"$ip", "port":3000}' /services/redis-a6f43b/ip
 ```
 
 The script above will launch redis and a sidekick in the same pod. The sidekick will enumerate all network interfaces and write the first one matching `10.0.0.0/16` to the formatted string to `/services/redis-a6f43b/ip` 
@@ -26,13 +26,14 @@ Please note how to pass arguments to multiple images: https://coreos.com/rkt/doc
 ### Other options
 
 ```
- Usage:
-   /bin/rkt-sidekick /key/in/etcd
- Flags:
-       --cidr string            cidr to match the ip (default "0.0.0.0/0")
-   -e, --etcd-endpoint string   an etcd address in the cluster (default "http://172.16.28.1:2379")
-   -f, --format string          format of the etcd key value. '$ip' will be replace by container's ip address (default "$ip")
-   -i, --interval duration      refresh interval (default 1m0s)
+Usage: rkt-sidekick etcd [options] [KEY_IN_ETCD]
+
+Options:
+    -cidr              cidr to match the ip (default: "0.0.0.0/0")
+    -etcd-endpoint     an etcd address in the cluster (default: "http://172.16.28.1:2379")
+    -format            format of the etcd key value. '$ip' will be replace by container's ip address (default: "$ip")
+    -expire-dir        set expiration TTLs for all items under that directory, not only the leaf node
+    -interval          refresh interval (default: "1m")
 ```
 
 ## License
