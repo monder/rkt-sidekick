@@ -1,20 +1,30 @@
-hash: 69b80400e5de67df21ee7d607df347169aab472aa1ef1f284c55cdd9746fa56a
-updated: 2016-07-17T11:49:46.300890403+03:00
+hash: 1f211783f7cc20b7f7846bc7602962bab17ade19304e661d05e1597aad2b71b4
+updated: 2016-11-25T15:42:38.798385572+02:00
 imports:
+- name: github.com/armon/go-radix
+  version: 4239b77079c7b5d1243b7b4736304ce8ddb6f0f2
+- name: github.com/bgentry/speakeasy
+  version: 675b82c74c0ed12283ee81ba8a534c8982c07b85
 - name: github.com/coreos/etcd
-  version: 336e4f2f28799d901bd76f58372dc274fd45d777
+  version: c31b1ab8d18ff7990a43bd258ca54f80c5a3c952
   subpackages:
   - client
   - pkg/pathutil
   - pkg/types
-- name: github.com/spf13/pflag
-  version: 367864438f1b1a3c7db4da06a2f55b144e6784e0
+- name: github.com/mattn/go-isatty
+  version: 30a891c33c7cde7b02a981314b4228ec99380cca
+- name: github.com/mitchellh/cli
+  version: fa17b36f6c61f1ddbbb08c9f6fde94b3c065a09d
 - name: github.com/ugorji/go
-  version: b94837a2404ab90efe9289e77a70694c355739cb
+  version: f1f1a805ed361a0e078bb537e4ea78cd37dcf065
   subpackages:
   - codec
 - name: golang.org/x/net
-  version: be28236b9034a52ec04f37f16f355b4bde7807e2
+  version: 6acef71eb69611914f7a30939ea9f6e194c78172
   subpackages:
   - context
-devImports: []
+- name: golang.org/x/sys
+  version: 30237cf4eefd639b184d1f2cb77a581ea0be8947
+  subpackages:
+  - unix
+testImports: []

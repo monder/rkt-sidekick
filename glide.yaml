@@ -6,4 +6,4 @@ import:
 - package: golang.org/x/net
   subpackages:
   - context
-- package: github.com/spf13/pflag
+- package: github.com/mitchellh/cli
