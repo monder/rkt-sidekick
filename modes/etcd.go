@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-type command struct {
+type etcdCommand struct {
 	etcdAddress string
 	cidr        string
 	format      string
@@ -24,12 +24,12 @@ type command struct {
 }
 
 var EtcdCommand = func() (cli.Command, error) {
-	return &command{}, nil
+	return &etcdCommand{}, nil
 }
 
-func (c command) Help() string {
+func (c etcdCommand) Help() string {
 	return `
-Usage: rkt-sidekick [options] [KEY_IN_ETCD]
+Usage: rkt-sidekick etcd [options] [KEY_IN_ETCD]
 
 Options:
     -cidr              cidr to match the ip (default: "0.0.0.0/0")
@@ -40,7 +40,7 @@ Options:
 `
 }
 
-func (c command) Run(args []string) int {
+func (c etcdCommand) Run(args []string) int {
 	cmdFlags := flag.NewFlagSet("etcd", flag.ContinueOnError)
 	cmdFlags.Usage = func() { fmt.Fprintf(os.Stderr, "%s", c.Help()) }
 
@@ -149,6 +149,6 @@ func getEtcd(endpoints []string) (client.KeysAPI, error) {
 	return kapi, nil
 }
 
-func (c command) Synopsis() string {
+func (c etcdCommand) Synopsis() string {
 	return "Updates a key in etcd with container IP address"
 }

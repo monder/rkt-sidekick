@@ -10,10 +10,11 @@ import (
 )
 
 func main() {
-	c := cli.NewCLI("rkt-sidekick", "0.1.0")
+	c := cli.NewCLI("rkt-sidekick", "0.1.1")
 	c.Args = os.Args[1:]
 	c.Commands = map[string]cli.CommandFactory{
-		"etcd": modes.EtcdCommand,
+		"etcd":    modes.EtcdCommand,
+		"route53": modes.Route53Command,
 	}
 
 	exitStatus, err := c.Run()
