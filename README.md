@@ -9,6 +9,26 @@ That provides the more [rkt]-like approach to [sidekick] model implementation wh
 ## Images
 Signed `ACI`s for `linux-arm64` are available at `monder.cc/rkt-sidekick` with versions matching git tags.
 
+## Prerequisites
+
+acbuild
+
+## Dependencies
+
+see `install-deps.sh`
+
+## Build
+
+```
+./build-aci.sh
+```
+
+## Build with rkt
+
+```
+./build-rkt
+```
+
 ## Usage
 
 ```
